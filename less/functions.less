@@ -1,17 +1,26 @@
 //--------------functions used in the style rules
 .full-height(){
-  height:100%;
+  height:100vh;
+}
+.flex(){
+  display: flex;
 }
 .flex-row(){
-  display: flex;
+  .flex;
   flex-direction: row;
 }
 .flex-col(){
-  display: flex;
+  .flex;
   flex-direction: column;
 }
 .between(){
   justify-content: space-between;
+}
+.stretch(){
+  align-items: stretch;
+}
+.center(){
+  align-items: center;
 }
 .space-reset(){
   margin: 0;

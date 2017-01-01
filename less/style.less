@@ -24,15 +24,21 @@ header{
   }
   h1{
     .space-reset;
+    .flex-col;
+    .center;
   }
   max-height: @header-height;
 }
 main{
-  .full-height;
-  padding:@header-height/2 0;
+  height: @main-height;
+
   .row{
     .flex-row;
-    align-items: stretch;
+    .stretch;
+  }
+  .conversation-row{
+    min-height:@main-height;
+
   }
   .conversation{
     flex:4 0 0;
@@ -57,7 +63,9 @@ footer{
     #task-input{
       padding: 8px;
       font-size: @main-font-size;
-      width:90%;
+      width:95vw;
+      max-width: auto;
+      min-width: auto;
       border: 0;
     }
     button{
@@ -65,7 +73,9 @@ footer{
       color:lighten(@main-color,30%);
       font-size: @main-font-size*1.5;
       border:0;
-      width: 10%;
+      width: 5vw;
+      min-width: 50px;
+      max-width: 80px;
     }
   }
 }
