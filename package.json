@@ -34,8 +34,8 @@
     "run-sequence": "^1.2.2"
   },
   "devDependencies": {
-
     "gulp-image-resize": "^0.10.0",
+    "gulp-plumber": "^1.1.0",
     "gulp-prettify": "^0.5.0",
     "gulp-pug-beautify": "0.0.1"
   }

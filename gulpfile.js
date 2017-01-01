@@ -6,6 +6,7 @@ var minify = require('gulp-minify');
 var browserSync = require('browser-sync').create();
 // var beautify = require('gulp-beautify');
 var prettify = require('gulp-prettify');
+var plumber = require('gulp-plumber');
 var cached = require('gulp-cached');
 //var beautify = require('gulp-beautify');
 //var gulpPugBeautify = require('gulp-pug-beautify');
@@ -17,6 +18,7 @@ var buildpath = './app';
 
 gulp.task('less', function(){
 	return gulp.src('less/*.less')
+		.pipe(plumber())
 		.pipe(less())
 		.pipe(browserSync.reload({
 		  stream: true
@@ -25,6 +27,7 @@ gulp.task('less', function(){
 });
 gulp.task('pug', function(){
   return gulp.src('./templates/*.pug')
+	.pipe(plumber())
   .pipe(pug())
 	.pipe(prettify())
   .pipe(browserSync.reload({stream: true}))
