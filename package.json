@@ -1,0 +1,42 @@
+{
+  "name": "Hello",
+  "version": "0.1.0",
+  "description": "Talk to your friends",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/johannesmu/electrotodo.git"
+  },
+  "keywords": [
+    "todo",
+    "electron"
+  ],
+  "author": "johannes m",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/johannesmu/electrotodo/issues"
+  },
+  "homepage": "https://github.com/johannesmu/electrotodo",
+  "dependencies": {
+    "browser-sync": "^2.16.0",
+    "gulp": "^3.9.1",
+    "gulp-beautify": "^2.0.0",
+    "gulp-cached": "^1.1.0",
+    "gulp-less": "^3.1.0",
+    "gulp-minify": "0.0.14",
+    "gulp-pug": "^3.0.4",
+    "gulp-watch": "^4.3.9",
+    "less": "^2.7.1",
+    "pug": "^2.0.0-beta6",
+    "run-sequence": "^1.2.2"
+  },
+  "devDependencies": {
+
+    "gulp-image-resize": "^0.10.0",
+    "gulp-prettify": "^0.5.0",
+    "gulp-pug-beautify": "0.0.1"
+  }
+}

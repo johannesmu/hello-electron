@@ -1,0 +1,25 @@
+doctype html
+html
+  head
+    title='Hello'
+    meta(name='viewport',content='width=device-width,initial-scale=1.0')
+    link(href='style.css',rel='stylesheet')
+    link(href='images/icon.png',rel='icon')
+  body
+    .app-view
+      header
+        h1='Hello'
+        img(src='images/icon.png',class='logo')
+      main
+        .row
+          .conversation
+            ul#chats
+              li hello friend
+          .friends
+            ul#contacts
+              li Bob
+      footer
+        form#input-form
+          input(type='text',name='task-input',id='task-input',placeholder='Hello')
+          button='+'
+    script(src='app.js')
