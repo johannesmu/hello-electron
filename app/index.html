@@ -3,20 +3,36 @@
   <head>
     <title>Hello</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' *.firebase.com https://www.gstatic.com; script-src 'self' https://www.gstatic.com/ http://localhost:3000 'sha256-ACIB33Hl9LVJSjX98OCGHPk/v2R6/jJW0Jcf1Rvk4BI=' ws://localhost:3000; object-src 'self';connect-src 'self' http://localhost:3000 ws://localhost:3002">
     <link href="style.css" rel="stylesheet">
     <link href="images/icon.png" rel="icon">
   </head>
   <body>
     <div class="app-view">
       <header>
-        <h1>Hello</h1>
-        <img class="logo" src="images/icon.png">
+        <div class="logo">
+          <h1>Hello</h1>
+          <img class="logo" src="images/icon.png">
+        </div>
+        <div class="user">
+          <ul class="authmenu">
+            <li>
+              <a href="#" id="login">Login</a>
+            </li>
+            <li>
+              <a href="#" id="signup">Signup</a>
+            </li>
+            <li>
+              <a href="#" id="logout">Logout</a>
+            </li>
+          </ul>
+        </div>
       </header>
       <main>
         <div class="row conversation-row">
           <div class="conversation">
             <ul id="chats">
-              <li>hello friend</li>
+              <li>Hello friend</li>
             </ul>
           </div>
           <div class="friends">
@@ -28,11 +44,30 @@
       </main>
       <footer>
         <form id="input-form">
-          <input type="text" name="task-input" id="task-input" placeholder="Hello">
+          <input type="text" name="chat-input" id="chat-input" placeholder="Hello">
           <button>+</button>
         </form>
       </footer>
+      <div id="overlay">
+        <div class="form-container">
+          <h1>Log in</h1>
+          <form id="login">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="user-email" placeholder="jane@doe.com">
+            <label for="email">Password</label>
+            <input type="password" name="password" id="password" placeholder="choose a password">
+            <div class="form-submit">
+              <button role="submit" id="login-btn">Log in</button>
+            </div>
+            <p>Don't have an account?
+              <a href="#" id="signup-btn">Sign up</a>
+            </p>
+          </form>
+        </div>
+      </div>
     </div>
+    <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
+    <script src="firebase-config.js"></script>
     <script src="app.js"></script>
   </body>
 </html>

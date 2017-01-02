@@ -3,23 +3,48 @@ html
   head
     title='Hello'
     meta(name='viewport',content='width=device-width,initial-scale=1.0')
+    //- This meta tags is for content security policy, otherwise Javascript will not run
+    meta(http-equiv="Content-Security-Policy" content="default-src 'self' *.firebase.com https://www.gstatic.com; script-src 'self' https://www.gstatic.com/ http://localhost:3000 'sha256-ACIB33Hl9LVJSjX98OCGHPk/v2R6/jJW0Jcf1Rvk4BI=' ws://localhost:3000; object-src 'self';connect-src 'self' http://localhost:3000 ws://localhost:3002")
     link(href='style.css',rel='stylesheet')
     link(href='images/icon.png',rel='icon')
   body
     .app-view
       header
-        h1='Hello'
-        img(src='images/icon.png',class='logo')
+        .logo
+          h1='Hello'
+          img(src='images/icon.png',class='logo')
+        .user
+          ul.authmenu
+            li
+              a(href='#',id='login') Login
+            li
+              a(href='#',id='signup') Signup
+            li
+              a(href='#',id='logout') Logout
       main
         .row.conversation-row
           .conversation
             ul#chats
-              li hello friend
+              li Hello friend
           .friends
             ul#contacts
               li Bob
       footer
         form#input-form
-          input(type='text',name='task-input',id='task-input',placeholder='Hello')
+          input(type='text',name='chat-input',id='chat-input',placeholder='Hello')
           button='+'
+      #overlay
+        .form-container
+          h1 Log in
+          form#login
+            label(for='email') Email
+            input(type='email',name='email',id='user-email',placeholder='jane@doe.com')
+            label(for='email') Password
+            input(type='password',name='password',id='password',placeholder='choose a password')
+            .form-submit
+              button(role='submit',id='login-btn') Log in
+            p Don't have an account?
+              a(href='#',id='signup-btn') Sign up
+    script(src='https://www.gstatic.com/firebasejs/3.6.4/firebase.js')
+    script(src='firebase-config.js')
     script(src='app.js')
