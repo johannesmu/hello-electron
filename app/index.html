@@ -3,7 +3,7 @@
   <head>
     <title>Hello</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' *.firebase.com https://www.gstatic.com; script-src 'self' https://www.gstatic.com/ http://localhost:3000 'sha256-ACIB33Hl9LVJSjX98OCGHPk/v2R6/jJW0Jcf1Rvk4BI=' ws://localhost:3000; object-src 'self';connect-src 'self' http://localhost:3000 ws://localhost:3002">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.gstatic.com/firebasejs/ http://localhost:3000 'sha256-ACIB33Hl9LVJSjX98OCGHPk/v2R6/jJW0Jcf1Rvk4BI='; connect-src http://localhost:3000 ws://localhost:3000;">
     <link href="style.css" rel="stylesheet">
     <link href="images/icon.png" rel="icon">
   </head>
@@ -50,17 +50,30 @@
       </footer>
       <div id="overlay">
         <div class="form-container">
-          <h1>Log in</h1>
           <form id="login">
-            <label for="email">Email</label>
-            <input type="email" name="email" id="user-email" placeholder="jane@doe.com">
-            <label for="email">Password</label>
-            <input type="password" name="password" id="password" placeholder="choose a password">
+            <h1>Log in</h1>
+            <label for="login-email">Email</label>
+            <input type="email" name="email" id="login-email" placeholder="you@domain.com">
+            <label for="login-password">Password</label>
+            <input type="password" name="password" id="login-password" placeholder="choose a password">
             <div class="form-submit">
               <button role="submit" id="login-btn">Log in</button>
             </div>
             <p>Don't have an account?
-              <a href="#" id="signup-btn">Sign up</a>
+              <a href="#" id="signup-link">Sign up</a>
+            </p>
+          </form>
+          <form id="signup">
+            <h1>Sign up</h1>
+            <label for="email">Email</label>
+            <input type="email" name="email" id="signup-email" placeholder="jane@doe.com">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="signup-password" placeholder="choose a password">
+            <div class="form-submit">
+              <button role="submit" id="signup-btn">Log in</button>
+            </div>
+            <p>Already have an account?
+              <a href="#" id="login-link">Log in</a>
             </p>
           </form>
         </div>

@@ -79,6 +79,7 @@ main .conversation {
   background-size: 80%;
   background-position: center center;
   background-repeat: no-repeat;
+  overflow-y: auto;
 }
 main .friends {
   flex: 1 0 0;
@@ -113,6 +114,7 @@ footer #input-form button {
   max-width: 80px;
 }
 #overlay {
+  visibility: collapse;
   background-color: rgba(0, 0, 0, 0.5);
   position: absolute;
   width: 100vw;
@@ -158,4 +160,7 @@ footer #input-form button {
   background: transparent;
   border: 1px solid #b5d183;
   border-radius: 4px;
+}
+#signup {
+  visibility: hidden;
 }
