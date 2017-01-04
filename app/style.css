@@ -7,6 +7,7 @@ body,
 body {
   margin: 0;
   padding: 0;
+  overflow-y: hidden;
 }
 .app-view {
   background-color: white;
@@ -124,12 +125,15 @@ footer #input-form button {
   justify-content: center;
 }
 #overlay .form-container {
-  width: 50vw;
-  height: 50vh;
+  min-width: 50vw;
+  max-width: 55vw;
+  min-height: 50vh;
+  max-height: 60vh;
   background-color: white;
+  overflow: hidden;
   padding: 10px;
   border-radius: 4px;
-  box-shadow: 2px 2px 4px #000000;
+  box-shadow: -2px 2px 4px #000000;
   color: #87ae40;
 }
 #overlay .form-container h1 {
@@ -155,11 +159,21 @@ footer #input-form button {
   align-items: center;
   justify-content: center;
 }
-#overlay .form-container #login-btn {
+#overlay .form-container .submit-btn {
   padding: 10px;
   background: transparent;
   border: 1px solid #b5d183;
   border-radius: 4px;
+}
+.form {
+  overflow: hidden;
+  transition: all 1s;
+}
+.form-switch {
+  text-align: center;
+}
+#login {
+  visibility: visible;
 }
 #signup {
   visibility: hidden;
