@@ -16,13 +16,13 @@ window.addEventListener('load',function(){
   document.getElementById('login-link').addEventListener('click',showForm);
 });
 function showForm(evt){
-  var target = evt.target.id;
-  console.log(target);
-  if(target=='signup-link'){
+  var id = evt.target.id;
+  console.log(id);
+  if(id=='signup-link'){
     document.getElementById('signup').style.visibility='hidden';
     document.getElementById('login').style.visibility='visible';
   }
-  if(target=='login-link'){
+  if(id=='login-link'){
     document.getElementById('login').style.visibility='visible';
     document.getElementById('signup').style.visibility='hidden';
   }

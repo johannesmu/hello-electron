@@ -1,2 +1,2 @@
 # Hello
-A desktop app for chat, built for Electron as a test.
+A desktop chat app, built with Electron and Firebase as a test.
