@@ -26,11 +26,10 @@ window.addEventListener('load',function(){
   });
 
   //listeners for form switcher
-  document.getElementById('signup-link').addEventListener('click',showForm);
-  document.getElementById('login-link').addEventListener('click',showForm);
+
   //sign up user
-  document.getElementById('signup-form').addEventListener('submit',getData);
-  document.getElementById('login-form').addEventListener('submit',getData);
+  document.getElementById('signup-form').addEventListener('submit',getFormData);
+  document.getElementById('login-form').addEventListener('submit',getFormData);
   //add listeners to main navigation functions
   //--logout
   document.getElementById('user-logout').addEventListener('click',signOutUser);
@@ -38,18 +37,12 @@ window.addEventListener('load',function(){
 //navigation controller
 function changeNavigationStatus(){
   if(app.userstatus == 1){
-    //hide signup and login
-    document.getElementById('user-signup').style.display = 'none';
-    document.getElementById('user-login').style.display = 'none';
-    //show logout and profile
+      //show logout and profile
     document.getElementById('user-logout').style.display = 'flex';
     document.getElementById('user-profile').style.display = 'flex';
   }
   else{
-    //show signup and login
-    document.getElementById('user-signup').style.display = 'flex';
-    document.getElementById('user-login').style.display = 'flex';
-    //hide logout and profile
+      //hide logout and profile
     document.getElementById('user-logout').style.display = 'none';
     document.getElementById('user-profile').style.display = 'none';
   }
@@ -88,9 +81,10 @@ function toggleOverlayVisibility(status){
     document.getElementById('signup').style.visibility = 'hidden';
   }
 }
-function getData(e){
+function getFormData(e){
   e.preventDefault();
   //get id from target
+  console.log(e);
   var id = e.target.id;
   //get data from the form
   var formData = new FormData(document.getElementById(id));
@@ -98,6 +92,9 @@ function getData(e){
   if(id=='signup-form'){
     //pass form email and password to signUpUser()
     signUpUser(formData.get('email'),formData.get('password'));
+    var username = formData.get('username');
+    //generate image
+    //write user to database
   }
   if(id=='login-form'){
     //pass form email and password to signInUser()
@@ -138,6 +135,26 @@ function writeUserData(userId, name, email, imageUrl) {
     email: email,
     profile_picture : imageUrl
   });
+}
+
+function generateProfileImage(user){
+  function generateImage(){
+  canvas = document.createElement('CANVAS');
+  var context = canvas.getContext('2d');
+  context.canvas.width = 100;
+  context.canvas.height = 100;
+  context.beginPath();
+  context.arc(50,50,50,0,2*Math.PI);
+  //create random color
+  var rnum = Math.random()*360;
+  var rcol = 'hsl('+rnum+',50%,70%)';
+  context.fillStyle = rcol;
+  context.fill();
+  context.font = "80px arial";
+  context.fillStyle = "white";
+  context.textAlign = 'center';
+  context.fillText("A",50,75);
+  idata = context.canvas.toDataURL();
 }
 
 function checkUserName(){

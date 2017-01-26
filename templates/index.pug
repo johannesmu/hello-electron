@@ -17,10 +17,6 @@ html
         .user
           ul.authmenu#nav
             li
-              a(href='#',id='user-login') Login
-            li
-              a(href='#',id='user-signup') Signup
-            li
               a(href='#',id='user-profile') Profile
             li
               a(href='#',id='user-logout') Logout
@@ -50,7 +46,7 @@ html
               label(for='login-password') Password
               input(type='password',name='password',id='login-password',placeholder='your account password')
               .form-submit
-                button(role='submit',id='login-btn',class='submit-btn') Log in
+                button(role='submit',id='login-btn',class='submit-btn',value='login') Log in
               p.form-switch Don't have an account?
                 a(href='#',id='signup-link') Sign up
           #signup.form
@@ -63,7 +59,7 @@ html
               label(for='password') Password
               input(type='password',name='password',id='signup-password',placeholder='choose a password')
               .form-submit
-                button(role='submit',id='signup-btn',class='submit-btn') Sign up
+                button(role='submit',id='signup-btn',class='submit-btn',value='signup') Sign up
               p.form-switch Already have an account?
                 a(href='#',id='login-link') Log in
     script(src='https://www.gstatic.com/firebasejs/3.6.4/firebase.js')
