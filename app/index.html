@@ -3,19 +3,21 @@
   <head>
     <title>Hello</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.gstatic.com/firebasejs/ http://localhost:3000 'sha256-ACIB33Hl9LVJSjX98OCGHPk/v2R6/jJW0Jcf1Rvk4BI='; connect-src http://localhost:3000 ws://localhost:3000 https://www.googleapis.com;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.gstatic.com/firebasejs/ http://localhost:3000 'sha256-ACIB33Hl9LVJSjX98OCGHPk/v2R6/jJW0Jcf1Rvk4BI='; connect-src http://localhost:3000 ws://localhost:3000 https://www.googleapis.com https://securetokens.googleapis.com/v1 *;">
     <link href="style.css" rel="stylesheet">
-    <link href="images/icon.png" rel="icon">
+    <link href="images/hello-icon.png" rel="icon">
   </head>
   <body>
     <div class="app-view">
       <header>
         <div class="logo">
-          <h1>Hello</h1>
           <img class="logo" src="images/icon.png">
         </div>
+        <div class="username">
+          <p>Hello Bro</p>
+        </div>
         <div class="user">
-          <ul class="authmenu">
+          <ul class="authmenu" id="nav">
             <li>
               <a href="#" id="user-login">Login</a>
             </li>
@@ -33,29 +35,31 @@
       </header>
       <main>
         <div class="row conversation-row">
-          <div class="conversation">
-            <ul id="chats">
-              <li>Hello friend</li>
-            </ul>
+          <div class="left conversation">
+            <ul id="chats"></ul>
           </div>
-          <div class="friends">
-            <ul id="contacts">
-              <li>Bob</li>
-            </ul>
+          <div class="right">
+            <ul id="contacts"></ul>
           </div>
         </div>
       </main>
       <footer>
         <form id="input-form">
-          <input type="text" name="chat-input" id="chat-input" placeholder="Hello">
-          <button>+</button>
+          <div class="row">
+            <div class="left">
+              <input type="text" name="chat-input" id="chat-input" placeholder="Hello">
+            </div>
+            <div class="right">
+              <button>+</button>
+            </div>
+          </div>
         </form>
       </footer>
       <div id="overlay">
         <div class="form-container">
           <div class="form" id="login">
             <form id="login-form">
-              <h1>Log in</h1>
+              <h1 class="form-header">Log in</h1>
               <label for="login-email">Email</label>
               <input type="email" name="email" id="login-email" placeholder="you@domain.com">
               <label for="login-password">Password</label>
@@ -70,7 +74,9 @@
           </div>
           <div class="form" id="signup">
             <form id="signup-form">
-              <h1>Sign up</h1>
+              <h1 class="form-header">Sign up</h1>
+              <label for="username">User Name</label>
+              <input type="text" name="username" id="username" placeholder="username">
               <label for="email">Email</label>
               <input type="email" name="email" id="signup-email" placeholder="jane@doe.com">
               <label for="password">Password</label>

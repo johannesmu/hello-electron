@@ -2,7 +2,7 @@ html,
 body,
 .app-view {
   height: 100vh;
-  font-family: arial, sans-serif;
+  font-family: arial, roboto, helvetica, sans-serif;
 }
 body {
   margin: 0;
@@ -24,14 +24,16 @@ header {
   box-sizing: border-box;
   background-color: #87ae40;
   color: #cbdfa8;
-  max-height: 8vh;
+  max-height: 10vh;
 }
 header .logo {
   display: flex;
   flex-direction: row;
+  box-sizing: border-box;
+  padding: 5px 0;
 }
 header .logo img {
-  max-width: 40px;
+  max-width: 50px;
   align-self: center;
 }
 header .logo h1 {
@@ -57,62 +59,61 @@ header .user .authmenu a {
   align-items: center;
   padding: 5px;
   text-decoration: none;
-  color: #cbdfa8;
+  color: #e2edcd;
 }
 header .user .authmenu a:hover {
   background-color: white;
   color: #87ae40;
 }
 main {
-  height: 84vh;
+  height: 80vh;
 }
-main .row {
+main ul {
+  list-style: none;
+}
+.row {
   display: flex;
   flex-direction: row;
   align-items: stretch;
 }
-main .conversation-row {
-  min-height: 84vh;
+.conversation-row {
+  min-height: 80vh;
 }
-main .conversation {
+.left {
   flex: 4 0 0;
+}
+.conversation {
   background-image: url("images/empty.png");
   background-size: 80%;
   background-position: center center;
   background-repeat: no-repeat;
   overflow-y: auto;
 }
-main .friends {
+.right {
   flex: 1 0 0;
-}
-main ul {
-  list-style: none;
+  border-left: 1px solid #b5d183;
 }
 footer {
   background-color: #9fc45d;
-  height: 8vh;
+  height: 10vh;
   padding: 2px;
-}
-footer #input-form {
-  display: flex;
-  flex-direction: row;
 }
 footer #input-form #chat-input {
   padding: 8px;
   font-size: 18px;
-  width: 95vw;
+  width: 100%;
   max-width: auto;
   min-width: auto;
   border: 0;
+  box-sizing: border-box;
 }
 footer #input-form button {
   background: transparent;
   color: #cbdfa8;
   font-size: 27px;
   border: 0;
-  width: 5vw;
-  min-width: 50px;
-  max-width: 80px;
+  min-width: 80px;
+  max-width: 100%;
 }
 #overlay {
   visibility: collapse;
@@ -124,50 +125,64 @@ footer #input-form button {
   align-items: center;
   justify-content: center;
 }
-#overlay .form-container {
-  min-width: 50vw;
-  max-width: 55vw;
+.form-container {
+  min-width: 30vw;
+  max-width: 40vw;
   min-height: 50vh;
   max-height: 60vh;
-  background-color: white;
+  background-color: #f8faf3;
   overflow: hidden;
   padding: 10px;
   border-radius: 4px;
   box-shadow: -2px 2px 4px #000000;
-  color: #87ae40;
+  color: #4D0080;
+  transition: max-height 0.5s;
 }
-#overlay .form-container h1 {
+.form-container .form-header {
   text-align: center;
-  color: #cbdfa8;
+  color: #a41aff;
+  margin: 0;
+  padding: 10px 0;
+  font-size: 18px;
 }
-#overlay .form-container label {
+.form-container label {
   display: block;
   padding: 10px 0;
   box-sizing: border-box;
 }
-#overlay .form-container input {
+.form-container input {
   display: block;
   box-sizing: border-box;
+  outline: 0;
   width: 100%;
   padding: 10px 5px;
-  border: 1px solid #b5d183;
+  border: 1px solid #8a00e6;
   border-radius: 4px;
+  background-color: #f5e6ff;
+  transition: background-color 1s;
 }
-#overlay .form-container .form-submit {
+.form-container input:focus {
+  background-color: white;
+}
+.form-container .form-submit {
   margin-top: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-#overlay .form-container .submit-btn {
+.form-container .submit-btn {
+  min-width: 100px;
+  max-width: 150px;
   padding: 10px;
-  background: transparent;
+  background: #87ae40;
+  color: white;
   border: 1px solid #b5d183;
   border-radius: 4px;
 }
 .form {
   overflow: hidden;
   transition: all 1s;
+  background-color: #f8faf3;
 }
 .form-switch {
   text-align: center;

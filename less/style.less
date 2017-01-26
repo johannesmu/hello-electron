@@ -3,7 +3,7 @@
 
 html,body,.app-view{
   .full-height;
-  font-family: arial,sans-serif;
+  font-family: @main-font-family;
 }
 body{
   .space-reset;
@@ -25,8 +25,10 @@ header{
   max-height: @header-height;
   .logo{
     .flex-row;
+    .box;
+    padding:5px 0;
     img{
-      max-width: 40px;
+      max-width: 50px;
       align-self: center;
     }
     h1{
@@ -49,7 +51,7 @@ header{
         .center;
         padding:5px;
         text-decoration: none;
-        color:lighten(@main-color,30%);
+        color:lighten(@main-color,40%);
       }
       a:hover{
         background-color:white;
@@ -60,52 +62,54 @@ header{
 }
 main{
   height: @main-height;
-  .row{
-    .flex-row;
-    .stretch;
-  }
-  .conversation-row{
-    min-height:@main-height;
 
-  }
-  .conversation{
-    flex:4 0 0;
-    background-image: url("images/empty.png");
-    background-size: 80%;
-    background-position:center center;
-    background-repeat: no-repeat;
-    overflow-y: auto;
-  }
-  .friends{
-    flex:1 0 0;
-  }
+
   ul{
     list-style: none;
   }
 }
-
+.row{
+  .flex-row;
+  .stretch;
+}
+.conversation-row{
+  min-height:@main-height;
+}
+.left{
+  flex:4 0 0;
+}
+.conversation{
+  background-image: url("images/empty.png");
+  background-size: 80%;
+  background-position:center center;
+  background-repeat: no-repeat;
+  overflow-y: auto;
+}
+.right{
+  flex:1 0 0;
+  border-left:1px solid lighten(@main-color,20%);
+}
 footer{
   background-color:lighten(@main-color,10%);
   height: @header-height;
   padding:2px;
   #input-form{
-    .flex-row;
     #chat-input{
       padding: 8px;
       font-size: @main-font-size;
-      width:95vw;
+      width:100%;
       max-width: auto;
       min-width: auto;
       border: 0;
+      .box;
     }
     button{
       background:transparent;
       color:lighten(@main-color,30%);
       font-size: @main-font-size*1.5;
       border:0;
-      width: 5vw;
-      min-width: 50px;
-      max-width: 80px;
+      min-width: 80px;
+      max-width: 100%;
     }
   }
 }
@@ -118,51 +122,65 @@ footer{
   .flex;
   .center;
   justify-content: center;
-  .form-container{
-    min-width:50vw;
-    max-width:55vw;
-    min-height: 50vh;
-    max-height: 60vh;
-    background-color: white;
-    overflow:hidden;
+}
+.form-container{
+  min-width:30vw;
+  max-width:40vw;
+  min-height: 50vh;
+  max-height: 60vh;
+  background-color: lighten(@main-color,50%);
+  overflow:hidden;
+  padding:10px;
+  border-radius:4px;
+  box-shadow: -2px 2px 4px darken(@main-color,50%);
+  color:@secondary-color;
+  transition:max-height 0.5s;
+  .form-header{
+    text-align: center;
+    color:lighten(@secondary-color,30%);
+    margin:0;
+    padding:10px 0;
+    font-size:18px;
+  }
+  label{
+    .block;
+    padding:10px 0;
+    .box;
+  }
+  input{
+    .block;
+    .box;
+    outline:0;
+    width:100%;
+    padding:10px 5px;
+    border:1px solid lighten(@secondary-color,20%);
+    border-radius: @form-border-radius;
+    background-color:lighten(@secondary-color,70%);
+    transition:background-color 1s;
+  }
+  input:focus{
+    background-color:white;
+  }
+  .form-submit{
+    margin-top:20px;
+    .flex;
+    .center;
+    justify-content: center;
+  }
+  .submit-btn{
+    min-width:100px;
+    max-width: 150px;
     padding:10px;
-    border-radius:4px;
-    box-shadow: -2px 2px 4px darken(@main-color,50%);
-    color:@main-color;
-    h1{
-      text-align: center;
-      color:lighten(@main-color,30%);
-    }
-    label{
-      .block;
-      padding:10px 0;
-      .box;
-    }
-    input{
-      .block;
-      .box;
-      width:100%;
-      padding:10px 5px;
-      border:1px solid lighten(@main-color,20%);
-      border-radius: @form-border-radius;
-    }
-    .form-submit{
-      margin-top:20px;
-      .flex;
-      .center;
-      justify-content: center;
-    }
-    .submit-btn{
-      padding:10px;
-      background:transparent;
-      border:1px solid lighten(@main-color,20%);
-      border-radius: @form-border-radius;
-    }
+    background:@main-color;
+    color:white;
+    border:1px solid lighten(@main-color,20%);
+    border-radius: @form-border-radius;
   }
 }
 .form{
   overflow: hidden;
   transition: all 1s;
+  background-color:lighten(@main-color,50%);
 }
 .form-switch{
   text-align: center;

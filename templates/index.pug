@@ -4,17 +4,18 @@ html
     title='Hello'
     meta(name='viewport',content='width=device-width,initial-scale=1.0')
     //- This meta tags is for content security policy, otherwise Javascript will not run
-    meta(http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.gstatic.com/firebasejs/ http://localhost:3000 'sha256-ACIB33Hl9LVJSjX98OCGHPk/v2R6/jJW0Jcf1Rvk4BI='; connect-src http://localhost:3000 ws://localhost:3000 https://www.googleapis.com;")
+    meta(http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.gstatic.com/firebasejs/ http://localhost:3000 'sha256-ACIB33Hl9LVJSjX98OCGHPk/v2R6/jJW0Jcf1Rvk4BI='; connect-src http://localhost:3000 ws://localhost:3000 https://www.googleapis.com https://securetokens.googleapis.com/v1 *;")
     link(href='style.css',rel='stylesheet')
-    link(href='images/icon.png',rel='icon')
+    link(href='images/hello-icon.png',rel='icon')
   body
     .app-view
       header
         .logo
-          h1='Hello'
           img(src='images/icon.png',class='logo')
+        .username
+          p Hello Bro
         .user
-          ul.authmenu
+          ul.authmenu#nav
             li
               a(href='#',id='user-login') Login
             li
@@ -25,21 +26,25 @@ html
               a(href='#',id='user-logout') Logout
       main
         .row.conversation-row
-          .conversation
+          .left.conversation
             ul#chats
-              li Hello friend
-          .friends
+
+          .right
             ul#contacts
-              li Bob
+
       footer
         form#input-form
-          input(type='text',name='chat-input',id='chat-input',placeholder='Hello')
-          button='+'
+          .row
+            .left
+              input(type='text',name='chat-input',id='chat-input',placeholder='Hello')
+            .right
+              button='+'
+          //- overlay page
       #overlay
         .form-container
           #login.form
             form#login-form
-              h1 Log in
+              h1.form-header Log in
               label(for='login-email') Email
               input(type='email',name='email',id='login-email',placeholder='you@domain.com')
               label(for='login-password') Password
@@ -50,7 +55,9 @@ html
                 a(href='#',id='signup-link') Sign up
           #signup.form
             form#signup-form
-              h1 Sign up
+              h1.form-header Sign up
+              label(for='username') User Name
+              input(type='text',name='username',id='username',placeholder='username')
               label(for='email') Email
               input(type='email',name='email',id='signup-email',placeholder='jane@doe.com')
               label(for='password') Password

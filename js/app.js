@@ -1,28 +1,30 @@
+app = {
+  userstatus:0,
+  userid:"",
+  database:firebase.database()
+}
+//things to do when window loads
 window.addEventListener('load',function(){
   //add firebase auth observer
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
       //user is logged in
-      //hide the overlay
+      //set the global user status to 1 (logged in)
+      app.userstatus = 1;
+      app.userid = user.uid;
+      changeNavigationStatus();
       toggleOverlayVisibility('hide');
       //hide menu items
-      document.getElementById('user-login').style.display='none';
-      document.getElementById('user-signup').style.display='none';
-      document.getElementById('user-profile').style.display='flex';
-      document.getElementById('user-logout').style.display='flex';
     }
     else{
       //user is logged out
-      //hide the logout button
-      document.getElementById('user-logout').style.display='none';
-      document.getElementById('user-profile').style.display='none';
-      //show the sign up and login button
-      document.getElementById('user-signup').style.display='flex';
-      document.getElementById('user-login').style.display='flex';
+      app.userstatus = 0;
+      changeNavigationStatus();
       //show the login form
       toggleOverlayVisibility('show');
     }
   });
+
   //listeners for form switcher
   document.getElementById('signup-link').addEventListener('click',showForm);
   document.getElementById('login-link').addEventListener('click',showForm);
@@ -33,6 +35,26 @@ window.addEventListener('load',function(){
   //--logout
   document.getElementById('user-logout').addEventListener('click',signOutUser);
 });
+//navigation controller
+function changeNavigationStatus(){
+  if(app.userstatus == 1){
+    //hide signup and login
+    document.getElementById('user-signup').style.display = 'none';
+    document.getElementById('user-login').style.display = 'none';
+    //show logout and profile
+    document.getElementById('user-logout').style.display = 'flex';
+    document.getElementById('user-profile').style.display = 'flex';
+  }
+  else{
+    //show signup and login
+    document.getElementById('user-signup').style.display = 'flex';
+    document.getElementById('user-login').style.display = 'flex';
+    //hide logout and profile
+    document.getElementById('user-logout').style.display = 'none';
+    document.getElementById('user-profile').style.display = 'none';
+  }
+}
+
 function showForm(evt){
   evt.preventDefault();
   var id = evt.target.id;
@@ -68,12 +90,17 @@ function toggleOverlayVisibility(status){
 }
 function getData(e){
   e.preventDefault();
+  //get id from target
   var id = e.target.id;
+  //get data from the form
   var formData = new FormData(document.getElementById(id));
+  //check which form has been submitted
   if(id=='signup-form'){
+    //pass form email and password to signUpUser()
     signUpUser(formData.get('email'),formData.get('password'));
   }
   if(id=='login-form'){
+    //pass form email and password to signInUser()
     signInUser(formData.get('email'),formData.get('password'));
   }
 }
@@ -92,7 +119,8 @@ function signInUser(email,password){
     // Handle Errors here.
     var errorCode = error.code;
     var errorMessage = error.message;
-    // ...
+    console.log(error);
+    // use the uid to write to database
   });
 }
 function signOutUser(){
@@ -102,4 +130,16 @@ function signOutUser(){
   }, function(error) {
     // An error happened.
   });
+}
+
+function writeUserData(userId, name, email, imageUrl) {
+  firebase.database().ref('users/' + userId).set({
+    username: name,
+    email: email,
+    profile_picture : imageUrl
+  });
+}
+
+function checkUserName(){
+  //find duplicates in the database
 }
