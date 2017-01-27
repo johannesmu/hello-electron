@@ -42,7 +42,7 @@ gulp.task('js', function(){
 gulp.task('browserSync', function() {
   browserSync.init({
     server: {
-      baseDir: buildpath
+      baseDir: buildpath,port:8082
     },
   })
 });

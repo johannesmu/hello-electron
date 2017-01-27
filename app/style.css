@@ -98,16 +98,17 @@ footer {
   height: 10vh;
   padding: 2px;
 }
-footer #input-form #chat-input {
+footer #chat-form #chat-input {
   padding: 8px;
   font-size: 18px;
   width: 100%;
   max-width: auto;
   min-width: auto;
   border: 0;
+  display: block;
   box-sizing: border-box;
 }
-footer #input-form button {
+footer #chat-form button {
   background: transparent;
   color: #cbdfa8;
   font-size: 27px;
@@ -116,7 +117,7 @@ footer #input-form button {
   max-width: 100%;
 }
 #overlay {
-  visibility: collapse;
+  visibility: visible;
   background-color: rgba(0, 0, 0, 0.5);
   position: absolute;
   width: 100vw;

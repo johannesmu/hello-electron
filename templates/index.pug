@@ -4,7 +4,7 @@ html
     title='Hello'
     meta(name='viewport',content='width=device-width,initial-scale=1.0')
     //- This meta tags is for content security policy, otherwise Javascript will not run
-    meta(http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.gstatic.com/firebasejs/ http://localhost:3000 'sha256-ACIB33Hl9LVJSjX98OCGHPk/v2R6/jJW0Jcf1Rvk4BI='; connect-src http://localhost:3000 ws://localhost:3000 https://www.googleapis.com https://securetokens.googleapis.com/v1 *;")
+    meta(http-equiv="Content-Security-Policy" content="default-src 'self' https://s-usc1c-nss-128.firebaseio.com/; script-src 'self' https://apis.google.com/js/api.js https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword https://www.gstatic.com/firebasejs/ https://project-hello-69121.firebaseio.com/ http://localhost:3000 'sha256-ACIB33Hl9LVJSjX98OCGHPk/v2R6/jJW0Jcf1Rvk4BI=' *; connect-src http://localhost:3000 ws://localhost:3000 https://www.googleapis.com https://securetokens.googleapis.com/v1 *;")
     link(href='style.css',rel='stylesheet')
     link(href='images/hello-icon.png',rel='icon')
   body
@@ -29,7 +29,7 @@ html
             ul#contacts
 
       footer
-        form#input-form
+        form#chat-form
           .row
             .left
               input(type='text',name='chat-input',id='chat-input',placeholder='Hello')
@@ -38,30 +38,31 @@ html
           //- overlay page
       #overlay
         .form-container
-          #login.form
-            form#login-form
-              h1.form-header Log in
-              label(for='login-email') Email
-              input(type='email',name='email',id='login-email',placeholder='you@domain.com')
-              label(for='login-password') Password
-              input(type='password',name='password',id='login-password',placeholder='your account password')
-              .form-submit
-                button(role='submit',id='login-btn',class='submit-btn',value='login') Log in
-              p.form-switch Don't have an account?
-                a(href='#',id='signup-link') Sign up
-          #signup.form
-            form#signup-form
-              h1.form-header Sign up
-              label(for='username') User Name
-              input(type='text',name='username',id='username',placeholder='username')
-              label(for='email') Email
-              input(type='email',name='email',id='signup-email',placeholder='jane@doe.com')
-              label(for='password') Password
-              input(type='password',name='password',id='signup-password',placeholder='choose a password')
-              .form-submit
-                button(role='submit',id='signup-btn',class='submit-btn',value='signup') Sign up
-              p.form-switch Already have an account?
-                a(href='#',id='login-link') Log in
+          .form-inner
+            #login.form
+              form#login-form
+                h1.form-header Log in
+                label(for='login-email') Email
+                input(type='email',name='email',id='login-email',placeholder='you@domain.com')
+                label(for='login-password') Password
+                input(type='password',name='password',id='login-password',placeholder='your account password')
+                .form-submit
+                  button(role='submit',id='login-btn',class='submit-btn',value='login') Log in
+                p.form-switch Don't have an account?
+                  a(href='#',id='signup-link') Sign up
+            #signup.form
+              form#signup-form
+                h1.form-header Sign up
+                label(for='username') User Name
+                input(type='text',name='username',id='username',placeholder='username')
+                label(for='email') Email
+                input(type='email',name='email',id='signup-email',placeholder='jane@doe.com')
+                label(for='password') Password
+                input(type='password',name='password',id='signup-password',placeholder='choose a password')
+                .form-submit
+                  button(role='submit',id='signup-btn',class='submit-btn',value='signup') Sign up
+                p.form-switch Already have an account?
+                  a(href='#',id='login-link') Log in
     script(src='https://www.gstatic.com/firebasejs/3.6.4/firebase.js')
     script(src='firebase-config.js')
     script(src='app.js')

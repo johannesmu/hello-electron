@@ -93,7 +93,7 @@ footer{
   background-color:lighten(@main-color,10%);
   height: @header-height;
   padding:2px;
-  #input-form{
+  #chat-form{
     #chat-input{
       padding: 8px;
       font-size: @main-font-size;
@@ -101,6 +101,7 @@ footer{
       max-width: auto;
       min-width: auto;
       border: 0;
+      .block;
       .box;
     }
     button{
@@ -114,7 +115,7 @@ footer{
   }
 }
 #overlay{
-  visibility: collapse;
+  visibility: visible;
   background-color: rgba(0,0,0,0.5);
   .absolute;
   width:100vw;

@@ -30,6 +30,7 @@ window.addEventListener('load',function(){
   //sign up user
   document.getElementById('signup-form').addEventListener('submit',getFormData);
   document.getElementById('login-form').addEventListener('submit',getFormData);
+  document.getElementById('chat-form').addEventListener('submit',getChatInput);
   //add listeners to main navigation functions
   //--logout
   document.getElementById('user-logout').addEventListener('click',signOutUser);
@@ -81,6 +82,9 @@ function toggleOverlayVisibility(status){
     document.getElementById('signup').style.visibility = 'hidden';
   }
 }
+function getChatInput(e){
+  e.preventDefault();
+}
 function getFormData(e){
   e.preventDefault();
   //get id from target
@@ -94,7 +98,10 @@ function getFormData(e){
     signUpUser(formData.get('email'),formData.get('password'));
     var username = formData.get('username');
     //generate image
+    var img = generateProfileImage(username);
     //write user to database
+    console.log(app.userid);
+    //writeUserData(userId, name, email, imageData);
   }
   if(id=='login-form'){
     //pass form email and password to signInUser()
@@ -109,7 +116,10 @@ function signUpUser(email,password){
     var errorCode = error.code;
     var errorMessage = error.message;
     console.log(error);
+    //write users
   });
+  var user = firebase.auth().currentUser;
+  console.log(user);
 }
 function signInUser(email,password){
   firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
@@ -129,23 +139,23 @@ function signOutUser(){
   });
 }
 
-function writeUserData(userId, name, email, imageUrl) {
+function writeUserData(userId, name, email, imageData) {
   firebase.database().ref('users/' + userId).set({
     username: name,
     email: email,
-    profile_picture : imageUrl
+    profile_picture : imageData
   });
 }
 
-function generateProfileImage(user){
-  function generateImage(){
+function generateProfileImage(username){
+  var letter = username.charAt(0);
   canvas = document.createElement('CANVAS');
   var context = canvas.getContext('2d');
   context.canvas.width = 100;
   context.canvas.height = 100;
   context.beginPath();
   context.arc(50,50,50,0,2*Math.PI);
-  //create random color
+  //create random color using hsv
   var rnum = Math.random()*360;
   var rcol = 'hsl('+rnum+',50%,70%)';
   context.fillStyle = rcol;
@@ -153,8 +163,9 @@ function generateProfileImage(user){
   context.font = "80px arial";
   context.fillStyle = "white";
   context.textAlign = 'center';
-  context.fillText("A",50,75);
-  idata = context.canvas.toDataURL();
+  context.fillText(letter,50,75);
+  imagedata = context.canvas.toDataURL();
+  return imagedata;
 }
 
 function checkUserName(){
