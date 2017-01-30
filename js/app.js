@@ -12,9 +12,11 @@ window.addEventListener('load',function(){
       //set the global user status to 1 (logged in)
       app.userstatus = 1;
       app.userid = user.uid;
+      app.user = user;
       changeNavigationStatus();
       toggleOverlayVisibility('hide');
       //hide menu items
+      console.log(user);
     }
     else{
       //user is logged out
@@ -24,7 +26,6 @@ window.addEventListener('load',function(){
       toggleOverlayVisibility('show');
     }
   });
-
   //listeners for form switcher
 
   //sign up user
@@ -48,6 +49,37 @@ function changeNavigationStatus(){
     document.getElementById('user-profile').style.display = 'none';
   }
 }
+
+//authentication form
+var rotator = document.getElementById('form-header');
+rotator.addEventListener("click",handleClick);
+
+function handleClick(e){
+  e.preventDefault();
+  //list of children
+  var listitems = rotator.children;
+  var len = listitems.length;
+  for(i=0;i<len;i++){
+    listitems[i].classList.remove("active");
+  }
+  var link = e.target;
+  link.parentElement.classList.add("active");
+  //get forms
+  changeForms(link.href);
+}
+
+function changeForms(link){
+  //get forms
+  var forms = document.getElementsByClassName('form');
+  //number of forms
+  var len = forms.length;
+  for(i=0;i<len;i++){
+    forms[i].classList.remove('active');
+  }
+  linkname = link.substring(link.indexOf("#")+1);
+  document.getElementById(linkname).classList.add('active');
+}
+
 
 function showForm(evt){
   evt.preventDefault();
@@ -73,13 +105,9 @@ function showForm(evt){
 function toggleOverlayVisibility(status){
   if(status=='show'){
     document.getElementById('overlay').style.visibility='visible';
-    document.getElementById('login').style.visibility = 'visible';
-    document.getElementById('signup').style.visibility = 'hidden';
   }
   if(status=='hide'){
     document.getElementById('overlay').style.visibility='hidden';
-    document.getElementById('login').style.visibility = 'hidden';
-    document.getElementById('signup').style.visibility = 'hidden';
   }
 }
 function getChatInput(e){
@@ -88,7 +116,6 @@ function getChatInput(e){
 function getFormData(e){
   e.preventDefault();
   //get id from target
-  console.log(e);
   var id = e.target.id;
   //get data from the form
   var formData = new FormData(document.getElementById(id));
@@ -100,7 +127,7 @@ function getFormData(e){
     //generate image
     var img = generateProfileImage(username);
     //write user to database
-    console.log(app.userid);
+    //console.log(app.userid);
     //writeUserData(userId, name, email, imageData);
   }
   if(id=='login-form'){
@@ -116,17 +143,17 @@ function signUpUser(email,password){
     var errorCode = error.code;
     var errorMessage = error.message;
     console.log(error);
-    //write users
+    //write users data 
   });
   var user = firebase.auth().currentUser;
-  console.log(user);
+  //console.log(user);
 }
 function signInUser(email,password){
   firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
     // Handle Errors here.
     var errorCode = error.code;
     var errorMessage = error.message;
-    console.log(error);
+    //console.log(error);
     // use the uid to write to database
   });
 }
@@ -165,9 +192,12 @@ function generateProfileImage(username){
   context.textAlign = 'center';
   context.fillText(letter,50,75);
   imagedata = context.canvas.toDataURL();
+  //delete the canvas
+  var elem = document.getElementsByTagName('canvas');
+  if(elem.length){
+    elem[0].remove();
+  }
+  //return the image data as dataurl
   return imagedata;
 }
 
-function checkUserName(){
-  //find duplicates in the database
-}

@@ -131,17 +131,15 @@ footer{
   max-height: 60vh;
   background-color: lighten(@main-color,50%);
   overflow:hidden;
-  padding:10px;
   border-radius:4px;
   box-shadow: -2px 2px 4px darken(@main-color,50%);
   color:@secondary-color;
   transition:max-height 0.5s;
-  .form-header{
-    text-align: center;
-    color:lighten(@secondary-color,30%);
-    margin:0;
-    padding:10px 0;
-    font-size:18px;
+  form{
+    .flex-col;
+    overflow:hidden;
+    padding:5px;
+    align-items:stretch;
   }
   label{
     .block;
@@ -182,13 +180,31 @@ footer{
   overflow: hidden;
   transition: all 1s;
   background-color:lighten(@main-color,50%);
+  max-height:0;
+  opacity:0;
 }
-.form-switch{
-  text-align: center;
+.form.active{
+  max-height:340px;
+  opacity:1;
 }
-#login{
-  visibility: visible;
+.form-header{
+  .space-reset;
+  list-style:none;
+  background:#a3a3a3;
+  color:#dad9d9;
+  .flex-row;
+  li{
+    flex:1 0 0;
+    a{
+      text-decoration:none;
+      color:inherit;
+      .block;
+      padding:10px;
+    }
+  }
+  li.active{
+    color:black;
+    background-color:#f8faf3;
+  }
 }
-#signup{
-  visibility: hidden;
-}
+

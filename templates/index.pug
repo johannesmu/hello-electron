@@ -38,10 +38,14 @@ html
           //- overlay page
       #overlay
         .form-container
+          ul.form-header#form-header
+            li.active 
+              a(href='#login') Login
+            li 
+              a(href='#signup') Signup
           .form-inner
-            #login.form
+            #login.form.active
               form#login-form
-                h1.form-header Log in
                 label(for='login-email') Email
                 input(type='email',name='email',id='login-email',placeholder='you@domain.com')
                 label(for='login-password') Password
@@ -52,7 +56,6 @@ html
                   a(href='#',id='signup-link') Sign up
             #signup.form
               form#signup-form
-                h1.form-header Sign up
                 label(for='username') User Name
                 input(type='text',name='username',id='username',placeholder='username')
                 label(for='email') Email

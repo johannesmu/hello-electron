@@ -51,10 +51,17 @@
       </footer>
       <div id="overlay">
         <div class="form-container">
+          <ul class="form-header" id="form-header">
+            <li class="active">
+              <a href="#login">Login</a>
+            </li>
+            <li>
+              <a href="#signup">Signup</a>
+            </li>
+          </ul>
           <div class="form-inner">
-            <div class="form" id="login">
+            <div class="form active" id="login">
               <form id="login-form">
-                <h1 class="form-header">Log in</h1>
                 <label for="login-email">Email</label>
                 <input type="email" name="email" id="login-email" placeholder="you@domain.com">
                 <label for="login-password">Password</label>
@@ -69,7 +76,6 @@
             </div>
             <div class="form" id="signup">
               <form id="signup-form">
-                <h1 class="form-header">Sign up</h1>
                 <label for="username">User Name</label>
                 <input type="text" name="username" id="username" placeholder="username">
                 <label for="email">Email</label>
