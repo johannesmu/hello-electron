@@ -4,7 +4,8 @@ html
     title='Hello'
     meta(name='viewport',content='width=device-width,initial-scale=1.0')
     //- This meta tags is for content security policy, otherwise Javascript will not run
-    meta(http-equiv="Content-Security-Policy" content="default-src 'self' https://s-usc1c-nss-128.firebaseio.com/; script-src 'self' https://apis.google.com/js/api.js https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword https://www.gstatic.com/firebasejs/ https://project-hello-69121.firebaseio.com/ http://localhost:3000 'sha256-ACIB33Hl9LVJSjX98OCGHPk/v2R6/jJW0Jcf1Rvk4BI=' *; connect-src http://localhost:3000 ws://localhost:3000 https://www.googleapis.com https://securetokens.googleapis.com/v1 *;")
+    meta(http-equiv="Content-Security-Policy" 
+    content="default-src 'self' https://s-usc1c-nss-128.firebaseio.com/; script-src 'self' https://apis.google.com/js/api.js https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword https://www.gstatic.com/firebasejs/ https://project-hello-69121.firebaseio.com/ http://localhost:3000 'sha256-ACIB33Hl9LVJSjX98OCGHPk/v2R6/jJW0Jcf1Rvk4BI=' *; connect-src http://localhost:3000 ws://localhost:3000 https://www.googleapis.com https://securetokens.googleapis.com/v1 *; img-src data: self http: https:")
     link(href='style.css',rel='stylesheet')
     link(href='images/hello-icon.png',rel='icon')
   body
@@ -12,9 +13,9 @@ html
       header
         .logo
           img(src='images/icon.png',class='logo')
-        .username
-          p Hello Bro
         .user
+          p#username
+          p#userimage
           ul.authmenu#nav
             li
               a(href='#',id='user-profile') Profile

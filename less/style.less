@@ -39,6 +39,20 @@ header{
   .user{
     .flex;
     .stretch;
+    p#username{
+      .space-reset;
+      .flex;
+      align-items:center;
+      padding:0 15px;
+    }
+    p#userimage{
+      .space-reset;
+      .flex;
+      align-items:center;
+      img{
+        max-width:48px;
+      }
+    }
     .authmenu{
       .no-list;
       .flex-row;
@@ -125,8 +139,8 @@ footer{
   justify-content: center;
 }
 .form-container{
-  min-width:30vw;
-  max-width:40vw;
+  min-width:50vw;
+  max-width:70vw;
   min-height: 50vh;
   max-height: 60vh;
   background-color: lighten(@main-color,50%);
@@ -138,7 +152,7 @@ footer{
   form{
     .flex-col;
     overflow:hidden;
-    padding:5px;
+    padding:5px 20px;
     align-items:stretch;
   }
   label{
